@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Data Diri</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-color: #f5f5f5;
+        --text-color: #333;
+        --card-bg: #fff;
+        --accent-color: #4a6fa5;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .dark-mode {
+        --bg-color: #121212;
+        --text-color: #f5f5f5;
+        --card-bg: #1e1e1e;
+        --accent-color: #6d9eeb;
+        --shadow-color: rgba(255, 255, 255, 0.05);
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all 0.5s ease;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        width: 350px;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .profile-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px var(--shadow-color);
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--accent-color);
+        margin: 0 auto 20px;
+        transition: all 0.3s ease;
+        animation: bounce 2s infinite;
+      }
+
+      .profile-pic:hover {
+        transform: scale(1.1);
+      }
+
+      .name {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: var(--accent-color);
+      }
+
+      .title {
+        font-size: 16px;
+        color: #888;
+        margin-bottom: 20px;
+      }
+
+      .info {
+        text-align: left;
+        margin: 20px 0;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .info-item i {
+        width: 30px;
+        color: var(--accent-color);
+        font-size: 18px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .social-links a {
+        color: var(--text-color);
+        font-size: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(30deg);
+      }
+
+      .decoration {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          var(--accent-color) 0%,
+          transparent 70%
+        );
+        opacity: 0.1;
+        z-index: -1;
+      }
+
+      .decoration-1 {
+        top: -50px;
+        left: -50px;
+        animation: float 6s infinite ease-in-out;
+      }
+
+      .decoration-2 {
+        bottom: -80px;
+        right: -80px;
+        animation: float 8s infinite ease-in-out reverse;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(10px, 10px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="profile-card">
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <div class="decoration decoration-1"></div>
+      <div class="decoration decoration-2"></div>
+
+      <img
+        src="panda.jpg"
+        alt="Profile Picture"
+        class="profile-pic"
+      />
+      <h1 class="name">Ahmad sulthon</h1>
+      <p class="title">Nasabah</p>
+       <p class="title">ID : 12345</p>
+       
+      <div class="info">
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <span>sarah.johnson@example.com</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <span>(123) 456-7890</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Semarang</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-birthday-cake"></i>
+          <span>25 Mei 1990</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("themeToggle");
+        const icon = themeToggle.querySelector("i");
+
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem("theme");
+        if (
+          savedTheme === "dark" ||
+          (!savedTheme &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.body.classList.add("dark-mode");
+          icon.classList.replace("fa-moon", "fa-sun");
+        }
+
+        themeToggle.addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+
+          if (document.body.classList.contains("dark-mode")) {
+            icon.classList.replace("fa-moon", "fa-sun");
+            localStorage.setItem("theme", "dark");
+          } else {
+            icon.classList.replace("fa-sun", "fa-moon");
+            localStorage.setItem("theme", "light");
+          }
+
+          
+        });
+      });
+    </script>
+  </body>
+</html>
