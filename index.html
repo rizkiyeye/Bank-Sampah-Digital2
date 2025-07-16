@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -32,11 +34,17 @@
                         <button class="btn" id="registerBtnMobile">Daftar</button>
                     </div>
                 </ul>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline" id="loginBtn">Masuk</button>
-                    <button class="btn" id="registerBtn">Daftar</button>
-                     <button class="btn" id="registerBtnHero" onclick="window.location.href='profil.html'">Profil</button>
+                <div id="registerModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <h2>Daftar Akun</h2>
+                        <form action="simpan_user.php" method="POST">
+                            <input type="text" name="username" id="regUsername" placeholder="Username" required>
+                            <input type="password" name="password" id="regPassword" placeholder="Password" required>
+                            <button type="submit">Daftar</button>
+                        </form>
+                    </div>
                 </div>
+
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -64,243 +72,299 @@
             </div>
         </div>
     </section>
-    
+
     <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Fitur Unggulan</h2>
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-title">
+            <h2>Fitur Unggulan</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">♻</div>
+                <h3>Penjemputan Sampah</h3>
+                <p>Jadwalkan penjemputan sampah langsung dari rumah Anda dengan mudah melalui aplikasi.</p>
+                <button class="btn" id="registerBtnHero" onclick="window.location.href='penjemputan.html'">Mulai Sekarang</button>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">♻</div>
-                    <h3>Penjemputan Sampah</h3>
-                    <p>Jadwalkan penjemputan sampah langsung dari rumah Anda dengan mudah melalui aplikasi.</p>
-                    <button class="btn" id="registerBtnHero" onclick="window.location.href='penjemputan.html'">Mulai Sekarang</button>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Tabungan Digital</h3>
+                <p>Dapatkan pembayaran langsung ke tabungan digital Anda setiap kali menyetorkan sampah.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Lacak Setoran</h3>
+                <p>Pantau setoran sampah dan saldo tabungan Anda secara real-time melalui dashboard.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Sistem Reward</h3>
+                <p>Kumpulkan poin dan dapatkan berbagai reward menarik dari partner Bank Sampah Digital.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Akses Mudah</h3>
+                <p>Akses layanan Bank Sampah Digital kapan saja dan di mana saja melalui aplikasi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Laporan Berkala</h3>
+                <p>Dapatkan laporan berkala tentang kontribusi Anda dalam mengurangi sampah.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works" id="how-it-works">
+    <div class="container">
+        <div class="section-title">
+            <h2>Cara Kerja</h2>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <h3>Daftar Akun</h3>
+                <p>Daftar akun Bank Sampah Digital melalui aplikasi atau website dengan mudah dan gratis.</p>
+            </div>
+            <div class="step">
+                <h3>Pilah Sampah</h3>
+                <p>Pilah sampah sesuai kategori (plastik, kertas, logam, dll) untuk memudahkan proses daur ulang.</p>
+            </div>
+            <div class="step">
+                <h3>Jadwalkan Penjemputan</h3>
+                <p>Jadwalkan penjemputan sampah melalui aplikasi atau antar langsung ke titik pengumpulan terdekat.</p>
+            </div>
+            <div class="step">
+                <h3>Dapatkan Pembayaran</h3>
+                <p>Terima pembayaran langsung ke tabungan digital Anda sesuai dengan jenis dan berat sampah.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Waste Categories Section -->
+<section class="waste-categories" id="categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Kategori Sampah & Harga</h2>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-image">🧴</div>
+                <div class="category-content">
+                    <h3>Plastik</h3>
+                    <p>Botol plastik, kemasan plastik, kantong plastik, gelas plastik, dll.</p>
+                    <div class="category-price">Rp 2.500 - Rp 5.000 / kg</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Tabungan Digital</h3>
-                    <p>Dapatkan pembayaran langsung ke tabungan digital Anda setiap kali menyetorkan sampah.</p>
-                         <button class="btn" id="registerBtnHero" onclick="window.location.href='bank.html'">Mulai Sekarang</button>
+            </div>
+            <div class="category-card">
+                <div class="category-image">📰</div>
+                <div class="category-content">
+                    <h3>Kertas</h3>
+                    <p>Koran, majalah, kardus, buku, kertas HVS, dll.</p>
+                    <div class="category-price">Rp 3.000 - Rp 4.500 / kg</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Lacak Setoran</h3>
-                    <p>Pantau setoran sampah dan saldo tabungan Anda secara real-time melalui dashboard.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-image">🥫</div>
+                <div class="category-content">
+                    <h3>Logam</h3>
+                    <p>Kaleng minuman, kaleng makanan, besi, aluminium, dll.</p>
+                    <div class="category-price">Rp 8.000 - Rp 15.000 / kg</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Sistem Reward</h3>
-                    <p>Kumpulkan poin dan dapatkan berbagai reward menarik dari partner Bank Sampah Digital.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Akses Mudah</h3>
-                    <p>Akses layanan Bank Sampah Digital kapan saja dan di mana saja melalui aplikasi.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Laporan Berkala</h3>
-                    <p>Dapatkan laporan berkala tentang kontribusi Anda dalam mengurangi sampah.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-image">🍃</div>
+                <div class="category-content">
+                    <h3>Organik</h3>
+                    <p>Sampah sisa makanan, sayuran, buah-buahan, dll.</p>
+                    <div class="category-price">Rp 1.000 - Rp 2.000 / kg</div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Alamat</h3>
+                        <p>Jl. Lingkungan Hijau No. 123, Jakarta Selatan, Indonesia</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h3>Telepon</h3>
+                        <p>+62 812-3456-7890</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>info@banksampahdigital.id</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-details">
+                        <h3>Jam Operasional</h3>
+                        <p>Senin - Sabtu: 08.00 - 17.00</p>
+                    </div>
+                </div>
+                <div class="social-media">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">📸</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">▶️</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <input type="text" id="subject" name="subject" placeholder="Masukkan subjek pesan">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="panda.jpg" alt="Bank Sampah Digital Logo">
+                <h2>Bank Sampah Digital</h2>
+                <p>Solusi modern untuk pengelolaan sampah yang memberikan manfaat ekonomi dan lingkungan.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-section">
+                    <h3>Navigasi</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#features">Fitur</a></li>
+                        <li><a href="#how-it-works">Cara Kerja</a></li>
+                        <li><a href="#categories">Kategori Sampah</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-section">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#">Penjemputan Sampah</a></li>
+                        <li><a href="#">Tabungan Digital</a></li>
+                        <li><a href="#">Edukasi Lingkungan</a></li>
+                        <li><a href="#">Program Komunitas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-section">
+                    <h3>Bantuan</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Panduan Pengguna</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bank Sampah Digital. Seluruh hak cipta dilindungi.</p>
+        </div>
+    </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>Cara Kerja</h2>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <h3>Daftar Akun</h3>
-                    <p>Daftar akun Bank Sampah Digital melalui aplikasi atau website dengan mudah dan gratis.</p>
-                </div>
-                <div class="step">
-                    <h3>Pilah Sampah</h3>
-                    <p>Pilah sampah sesuai kategori (plastik, kertas, logam, dll) untuk memudahkan proses daur ulang.</p>
-                </div>
-                <div class="step">
-                    <h3>Jadwalkan Penjemputan</h3>
-                    <p>Jadwalkan penjemputan sampah melalui aplikasi atau antar langsung ke titik pengumpulan terdekat.</p>
-                </div>
-                <div class="step">
-                    <h3>Dapatkan Pembayaran</h3>
-                    <p>Terima pembayaran langsung ke tabungan digital Anda sesuai dengan jenis dan berat sampah.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        fetch("backend/simpan_data.php")
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.querySelector("#tabelSampah tbody");
+                data.forEach(row => {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `<td>${row.jenis}</td><td>${row.berat}</td><td>${row.tanggal}</td>`;
+                    tbody.appendChild(tr);
+                });
+            });
 
-    <!-- Waste Categories Section -->
-    <section class="waste-categories" id="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Kategori Sampah & Harga</h2>
-            </div>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-image">🧴</div>
-                    <div class="category-content">
-                        <h3>Plastik</h3>
-                        <p>Botol plastik, kemasan plastik, kantong plastik, gelas plastik, dll.</p>
-                        <div class="category-price">Rp 2.500 - Rp 5.000 / kg</div>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">📰</div>
-                    <div class="category-content">
-                        <h3>Kertas</h3>
-                        <p>Koran, majalah, kardus, buku, kertas HVS, dll.</p>
-                        <div class="category-price">Rp 3.000 - Rp 4.500 / kg</div>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">🥫</div>
-                    <div class="category-content">
-                        <h3>Logam</h3>
-                        <p>Kaleng minuman, kaleng makanan, besi, aluminium, dll.</p>
-                        <div class="category-price">Rp 8.000 - Rp 15.000 / kg</div>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">🍃</div>
-                    <div class="category-content">
-                        <h3>Organik</h3>
-                        <p>Sampah sisa makanan, sayuran, buah-buahan, dll.</p>
-                        <div class="category-price">Rp 1.000 - Rp 2.000 / kg</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Hubungi Kami</h2>
-            </div>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h3>Alamat</h3>
-                            <p>Jl. Lingkungan Hijau No. 123, Jakarta Selatan, Indonesia</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div class="contact-details">
-                            <h3>Telepon</h3>
-                            <p>+62 812-3456-7890</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>info@banksampahdigital.id</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div class="contact-details">
-                            <h3>Jam Operasional</h3>
-                            <p>Senin - Sabtu: 08.00 - 17.00</p>
-                        </div>
-                    </div>
-                    <div class="social-media">
-                        <h3>Ikuti Kami</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon">📘</a>
-                            <a href="#" class="social-icon">📸</a>
-                            <a href="#" class="social-icon">🐦</a>
-                            <a href="#" class="social-icon">▶️</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form-container">
-                    <form class="contact-form">
-                        <h3>Kirim Pesan</h3>
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Nomor Telepon</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subjek</label>
-                            <input type="text" id="subject" name="subject" placeholder="Masukkan subjek pesan">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Pesan</label>
-                            <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="panda.jpg" alt="Bank Sampah Digital Logo">
-                    <h2>Bank Sampah Digital</h2>
-                    <p>Solusi modern untuk pengelolaan sampah yang memberikan manfaat ekonomi dan lingkungan.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-links-section">
-                        <h3>Navigasi</h3>
-                        <ul>
-                            <li><a href="#home">Beranda</a></li>
-                            <li><a href="#features">Fitur</a></li>
-                            <li><a href="#how-it-works">Cara Kerja</a></li>
-                            <li><a href="#categories">Kategori Sampah</a></li>
-                            <li><a href="#contact">Kontak</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-section">
-                        <h3>Layanan</h3>
-                        <ul>
-                            <li><a href="#">Penjemputan Sampah</a></li>
-                            <li><a href="#">Tabungan Digital</a></li>
-                            <li><a href="#">Edukasi Lingkungan</a></li>
-                            <li><a href="#">Program Komunitas</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-section">
-                        <h3>Bantuan</h3>
-                        <ul>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Syarat & Ketentuan</a></li>
-                            <li><a href="#">Kebijakan Privasi</a></li>
-                            <li><a href="#">Panduan Pengguna</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bank Sampah Digital. Seluruh hak cipta dilindungi.</p>
-            </div>
-        </div>
-    </section>
+
+        // Menampilkan notifikasi
+        fetch("backend/ambil_notifikasi.php")
+            .then(res => res.json())
+            .then(data => {
+                let html = "";
+                data.forEach(n => {
+                    html += `<li>${n.pesan} <br><small>${n.tanggal}</small></li>`;
+                });
+                document.getElementById("notifikasi").innerHTML = html;
+            });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+
+            fetch("simpan_user.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === "success") {
+                        alert("Registrasi berhasil!");
+                        document.getElementById("registerForm").reset();
+                        document.getElementById("registerModal").style.display = "none";
+                    } else {
+                        alert("Gagal registrasi: " + data);
+                    }
+                })
+                .catch(error => {
+                    console.error("Gagal fetch:", error);
+                });
+        });
+    </script>
+    </body>
+
+    </html>
