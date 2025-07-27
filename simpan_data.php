@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "bank_sampah_digital2";
+$database = "bank-sampah-digital2";
 
 $conn = new mysqli($host, $user, $pass, $db);
 

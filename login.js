@@ -1,18 +1,20 @@
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const username = document.getElementById("loginUsername").value;
-  const password = document.getElementById("loginPassword").value;
+document.getElementById('formLogin').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  fetch("login.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `username=${encodeURIComponent(
-      username
-    )}&password=${encodeURIComponent(password)}`,
-  })
-    .then((res) => res.text())
-    .then((data) => {
-      alert(data); // bisa diganti redirect
-      modalContainer.style.display = "none";
-    });
+    const formData = new FormData(this);
+
+    fetch("backend/login.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("Login berhasil. Selamat datang, " + data.username);
+            window.location.reload();
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(err => console.error(err));
 });
