@@ -152,39 +152,6 @@ session_start();
         </div>
     </section>
 
-    <!-- User Data Section (hanya tampil jika sudah login) -->
-    <?php if (isset($_SESSION['username'])): ?>
-    <section id="data-sampah" class="user-data">
-        <div class="container">
-            <div class="section-title">
-                <h2>Data Setoran Sampah Anda</h2>
-            </div>
-            <div class="table-container">
-                <table id="tabelSampah">
-                    <thead>
-                        <tr>
-                            <th>Jenis Sampah</th>
-                            <th>Berat (kg)</th>
-                            <th>Harga per kg</th>
-                            <th>Total Harga</th>
-                            <th>Tanggal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data akan dimuat via JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-            <div class="notifikasi-section">
-                <h3>Notifikasi</h3>
-                <ul id="notifikasi">
-                    <!-- Notifikasi akan dimuat via JavaScript -->
-                </ul>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
-
     <!-- Waste Categories Section -->
     <section class="waste-categories" id="categories">
         <div class="container">

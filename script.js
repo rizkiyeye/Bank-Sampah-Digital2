@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       phoneGroup.appendChild(phoneLabel);
       phoneGroup.appendChild(phoneInput);
-      form.appendChild(phoneGroup);
+      form.appendChild(phoneGroup); 
     }
 
     // Password input

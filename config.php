@@ -1,61 +1,100 @@
 <?php
-// Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "bank_sampah2"; // Database name
+// Konfigurasi Database
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'bank_sampah2');
+define('DB_USER', 'root'); 
+define('DB_PASS', ''); // Sesuaikan dengan password MySQL Anda
 
-// Create connection
+// Inisialisasi koneksi database
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Set charset to utf8 if needed
-    $conn->exec("SET NAMES utf8");
+    $conn = new PDO(
+        "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8mb4",
+        DB_USER, 
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ]
+    );
 } catch(PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
+    header('Content-Type: application/json');
+    http_response_code(500);
+    die(json_encode([
+        'success' => false,
+        'message' => 'Koneksi database gagal',
+        'error' => $e->getMessage(),
+        'details' => 'Pastikan konfigurasi database sudah benar'
+    ]));
 }
 
-// Start session
-session_start();
+// Pengaturan Session
+session_set_cookie_params([
+    'lifetime' => 86400, // 1 hari
+    'path' => '/',
+    'domain' => $_SERVER['HTTP_HOST'],
+    'secure' => isset($_SERVER['HTTPS']),
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
 
-// Helper functions
-function isLoggedIn() {
-    return isset($_SESSION['user_id']);
+if (session_status() === PHP_SESSION_NONE) {
+    session_name('BANK_SAMPAH_AUTH');
+    session_start();
 }
 
+/**
+ * Fungsi untuk memeriksa login user
+ */
 function requireLogin() {
-    if (!isLoggedIn()) {
-        header("Location: login.php");
-        exit();
+    if (!isset($_SESSION['user_id'])) {
+        header('Content-Type: application/json');
+        http_response_code(401);
+        die(json_encode([
+            'success' => false,
+            'message' => 'Akses ditolak. Silakan login terlebih dahulu.'
+        ]));
     }
 }
 
+/**
+ * Mendapatkan ID user yang sedang login
+ */
 function getCurrentUserId() {
-    return $_SESSION['user_id'] ?? null;
+    return $_SESSION['user_id'] ?? 0;
 }
 
-function hashPassword($password) {
-    return password_hash($password, PASSWORD_DEFAULT);
+/**
+ * Mendapatkan data user yang sedang login
+ */
+function getCurrentUser() {
+    global $conn;
+    
+    if (!isset($_SESSION['user_id'])) {
+        return null;
+    }
+    
+    try {
+        $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->execute([$_SESSION['user_id']]);
+        return $stmt->fetch();
+    } catch(PDOException $e) {
+        error_log("Error getCurrentUser: " . $e->getMessage());
+        return null;
+    }
 }
 
-function verifyPassword($password, $hash) {
-    return password_verify($password, $hash);
+/**
+ * Fungsi sanitasi input
+ */
+function sanitize_input($data) {
+    return htmlspecialchars(strip_tags(trim($data ?? '')));
 }
 
-function redirect($url) {
-    header("Location: $url");
-    exit();
+/**
+ * Validasi format tanggal
+ */
+function validateDate($date, $format = 'Y-m-d') {
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) === $date;
 }
-
-function formatRupiah($amount) {
-    return 'Rp ' . number_format($amount, 0, ',', '.');
-}
-
-function formatDate($date) {
-    return date('d/m/Y', strtotime($date));
-}
-
-function formatDateTime($datetime) {
-    return date('d/m/Y H:i', strtotime($datetime));
-}
-?>
